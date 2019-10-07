@@ -1,4 +1,8 @@
 package Employee;
+<<<<<<< HEAD
+=======
+import java.util.*;
+>>>>>>> b445fb078f1a15d27329c9c78c1e90a6a29efebd
 
 public class Employee
 {
@@ -11,13 +15,16 @@ public class Employee
     private double salary;
     private int hike;
     private int leavesLeft;
+    private Date DOJ;
     
     public Employee(String name, int age, String gender){
+        DOJ = new Date(); 
         this.name = name;
         this.gender = gender;
         this.age = age;
         empId = baseId;
         baseId = baseId + 1;
+        leavesLeft = leavesAllowed;
     }
     
     public void setName(String n){
@@ -61,6 +68,11 @@ public class Employee
     }
     public int getEmpId(){
         return empId;
+    }
+    private String getDOJ(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate= formatter.format(DOJ);    
+        return strDate;
     }
     
 }
