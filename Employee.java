@@ -1,8 +1,7 @@
 package Employee;
-<<<<<<< HEAD
-=======
+
 import java.util.*;
->>>>>>> b445fb078f1a15d27329c9c78c1e90a6a29efebd
+import java.text.*;
 
 public class Employee
 {
@@ -63,7 +62,7 @@ public class Employee
     public int getHike(){
         return hike;
     }
-    public void setHIke(int h){
+    public void setHike(int h){
         hike = h;
     }
     public int getEmpId(){
