@@ -15,7 +15,7 @@ public class Employee
     private int hike;
     private int leavesLeft;
     private Date DOJ;
-    private int leavesTaken;
+    
     public Employee(String name, int age, String gender){
         DOJ = new Date(); 
         this.name = name;
@@ -24,7 +24,6 @@ public class Employee
         empId = baseId;
         baseId = baseId + 1;
         leavesLeft = leavesAllowed;
-        leavesTaken=0;
     }
     
     public void setName(String n){
@@ -73,21 +72,6 @@ public class Employee
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String strDate= formatter.format(DOJ);    
         return strDate;
-    }
-    
-    public void requestLeave(Employee boss, int days){
-        Date today=new Date();
-        int m=1;
-        // if(today.getYear()-DOJ.getYear()){
-        //     int m=today.getMonth()-1;
-        // }else{
-        //     int m=today.getMonth()-DOJ.getMonth();
-        //}
-        leavesLeft=m*leavesAllowed-leavesTaken;
-        boolean granted=boss.grantLeave(this,days);
-        if(granted){
-            leavesTaken+=days
-        }
     }
     
 }
