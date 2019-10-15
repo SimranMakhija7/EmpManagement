@@ -78,11 +78,11 @@ public class Employee
     public void requestLeave(Employee boss, int days){
         Date today=new Date();
         int m=1;
-        // if(today.getYear()-DOJ.getYear()){
-        //     int m=today.getMonth()-1;
-        // }else{
-        //     int m=today.getMonth()-DOJ.getMonth();
-        //}
+        if(today.getYear()-DOJ.getYear()){
+            int m=today.getMonth()-1;
+        }else{
+            int m=today.getMonth()-DOJ.getMonth();
+        }
         leavesLeft=m*leavesAllowed-leavesTaken;
         boolean granted=boss.grantLeave(this,days);
         if(granted){
