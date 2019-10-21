@@ -1,8 +1,9 @@
 package Employee;
-
+//util.Date needs to be used to initiaise date and then sent into Date.Date constructor using formatter
 import java.util.*;
 import java.text.*;
-
+import myDate.myDate; 
+import Employee.HR;
 public class Employee
 {
     private int leavesAllowed;
@@ -15,7 +16,9 @@ public class Employee
     private int hike;
     private int leavesLeft;
     private Date DOJ;
+    private myDate doj;
     private int leavesTaken;
+    
     public Employee(String name, int age, String gender){
         DOJ = new Date(); 
         this.name = name;
@@ -25,6 +28,9 @@ public class Employee
         baseId = baseId + 1;
         leavesLeft = leavesAllowed;
         leavesTaken=0;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate= formatter.format(DOJ);
+        doj=new myDate(strDate);
     }
     
     public void setName(String n){
@@ -70,23 +76,29 @@ public class Employee
         return empId;
     }
     private String getDOJ(){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
         String strDate= formatter.format(DOJ);    
         return strDate;
     }
     
-    public void requestLeave(Employee boss, int days){
-        Date today=new Date();
+    public void requestLeave(HR boss, int days){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+        String strDate= formatter.format(new Date());
+        myDate today=new myDate(strDate);
+        if(today.getMonth()==1) leavesTaken=0;
         int m=1;
-        if(today.getYear()-DOJ.getYear()){
-            int m=today.getMonth()-1;
+        if(today.getYear()-doj.getYear()!=0){
+             m=today.getMonth()-1;
         }else{
-            int m=today.getMonth()-DOJ.getMonth();
+             m=today.getMonth()-doj.getMonth();
         }
         leavesLeft=m*leavesAllowed-leavesTaken;
         boolean granted=boss.grantLeave(this,days);
         if(granted){
-            leavesTaken+=days
+            leavesTaken+=days;
+            System.out.println("Leave granted");
+        }else{
+            System.out.println("Leave denied");
         }
     }
     

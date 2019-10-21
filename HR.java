@@ -13,13 +13,13 @@ public class HR extends Manager{
 
     Scanner sc = new Scanner(System.in);
     
-    public boolean grantLeave(Employee e, int day){
+    public boolean grantLeave(Employee e, int days){
 
-    	if(days > e.leavesLeft){
-    		System.out.println("Your leaves left are " + e.leavesLeft +" ,and you are asking for leave for "+ days+" days.\nY/N");
+    	if(days > e.getLeavesLeft()){
+    		System.out.println("Your leaves left are " + e.getLeavesLeft() +" ,and you are asking for leave for "+ days+" days.\nY/N");
     		String ans = sc.nextLine();
     		if(ans == "N"){
-    			return FALSE;
+    			return true;
     		}else if(ans=="Y"){
     			System.out.println("Your request is being forwarded.");
     		}
@@ -27,9 +27,9 @@ public class HR extends Manager{
     	Random rand = new Random(); 
     	int status = rand.nextInt(2); 
     	if (status == 1){
-    		return TRUE;
+    		return true;
     	}else{
-    		return FALSE;
+    		return false;
     	}
     }
 }
