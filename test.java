@@ -11,10 +11,12 @@ public class test{
         Developer Abby= new Developer("Abby",24,"Female");
         Cloud Dan=new Cloud("Dan",25,"Male");
         HR Stella=new HR("Stella",25,"Female");
+        
         ArrayList<Employee> employees=new ArrayList<Employee>();
         employees.add(Abby);
         employees.add(Dan);
         employees.add(Stella);
+        
         Scanner sc=new Scanner(System.in);
         System.out.println("Welcome to Employee Management system");
         System.out.println("Please enter your name.");
@@ -45,7 +47,7 @@ public class test{
                 }
             }
             System.out.println("Do you wish to exit the program?(Y/N)");
-            if(sc.next()=="Y"){ exit=true;}
+            if(sc.next().charAt(0)=='Y'){ exit=true;}
         }
     }
 }

@@ -1,9 +1,10 @@
 package Employee;
-//util.Date needs to be used to initiaise date and then sent into Date.Date constructor using formatter
+
 import java.util.*;
 import java.text.*;
 import myDate.myDate; 
 import Employee.HR;
+
 public class Employee
 {
     private int leavesAllowed;
@@ -19,18 +20,22 @@ public class Employee
     private myDate doj;
     private int leavesTaken;
     
-    public Employee(String name, int age, String gender){
+    public Employee(String name, int age, String gender, int l){
         DOJ = new Date(); 
         this.name = name;
         this.gender = gender;
         this.age = age;
         empId = baseId;
         baseId = baseId + 1;
+        leavesAllowed=l;
         leavesLeft = leavesAllowed;
         leavesTaken=0;
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String strDate= formatter.format(DOJ);
         doj=new myDate(strDate);
+        //System.out.println(leavesLeft);
+        //System.out.println(leavesAllowed);
+        
     }
     
     public void setName(String n){
@@ -58,9 +63,11 @@ public class Employee
         return leavesAllowed;
     }
     public void setLeaves(int l){
+        leavesLeft=l;
         leavesAllowed = l;
     }
     public int getLeavesLeft(){
+        //System.out.println("bananaaaa");
         return leavesLeft;
     }
     public void setLeavesLeft(int left){
@@ -92,7 +99,9 @@ public class Employee
         }else{
              m=today.getMonth()-doj.getMonth();
         }
-        leavesLeft=m*leavesAllowed-leavesTaken;
+        leavesLeft=leavesAllowed-leavesTaken;
+        //ystem.out.println("BANAAA");
+        //System.out.println(leavesLeft);
         boolean granted=boss.grantLeave(this,days);
         if(granted){
             leavesTaken+=days;
