@@ -100,6 +100,9 @@ public class Employee
              m=today.getMonth()-doj.getMonth();
         }
         leavesLeft=leavesAllowed-leavesTaken;
+        if(leavesLeft<0){
+            leavesLeft=0;
+        }
         //ystem.out.println("BANAAA");
         //System.out.println(leavesLeft);
         boolean granted=boss.grantLeave(this,days);

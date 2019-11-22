@@ -15,21 +15,26 @@ public class HR extends Manager{
     
     public boolean grantLeave(Employee e, int days){
 
-    	if(days > e.getLeavesLeft()){
+    	if(days >= e.getLeavesLeft()){
     		System.out.println("Your leaves left are " + e.getLeavesLeft() +" ,and you are asking for leave for "+ days+" days.\nY/N");
-    		String ans = sc.nextLine();
-    		if(ans == "N"){
+    		
+    		if(sc.next().charAt(0)=='Y'){
+    			// System.out.println("Your request is being forwarded.");
+    			double dailySalary=e.getSalary()/30;
+    			int extra=days-e.getLeavesLeft();
+    			// System.out.println(extra);
+    			// System.out.println(dailySalary);
+    			// System.out.println("BANANA");
+    			// System.out.println(e.getSalary());
+    			// System.out.println(e.getSalary()-dailySalary*extra);
+    			e.setSalary(e.getSalary()-dailySalary*extra);
+    			// System.out.println("BANANAAAA");
+    			// System.out.println(e.getSalary());
     			return true;
-    		}else if(ans=="Y"){
-    			System.out.println("Your request is being forwarded.");
     		}
-    	}
-    	Random rand = new Random(); 
-    	int status = rand.nextInt(2); 
-    	if (status == 1){
-    		return true;
     	}else{
-    		return false;
+    	    return true;
     	}
+    	return false;
     }
 }

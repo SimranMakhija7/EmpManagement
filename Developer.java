@@ -5,7 +5,7 @@ import java.util.*;
 public class Developer extends Engineer{
 	public Developer(String name, int age, String gender){
 		super( name,  age, gender);
-		double sal = 1000000;
+		double sal = 1000000/12;
 		int h = 40;
 		int l = 3;
 		
